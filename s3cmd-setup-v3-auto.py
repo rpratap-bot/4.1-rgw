@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os, sys
+import os, sys, random
 print('enable the epel repo or by default it may be installed')
 enable_epel = os.system('yum-config-manager --enable epel')
 print(enable_epel)
@@ -37,19 +37,20 @@ s3cmd_work = os.system('s3cmd ls')
 print(s3cmd_work)
 print("----------------------------------------------------------------------")
 print('Create a bucket')
-bkt_name = input("Enter a bucket name that you want to create: ")
+random_letter = random.randint(1,1000)
+random_letter_convert = str(random_letter)
+bkt_name = hostname+random_letter_convert
 bkt_create = os.system('s3cmd mb s3://{}'.format(bkt_name))
 print(s3cmd_work)
 print('Bucket created with name as {}'.format(bkt_name))
 print("----------------------------------------------------------------------")
 print('Create a file of size 100 MB')
-file_name = input("Enter any file name you want to create of 100 MB: ")
+file_name = hostname+random_letter_convert
 file_create = os.system('head -c 100MB /dev/zero > {}'.format(file_name))
 file_created = os.system('ls -l  {}'.format(file_name))
 print(file_created)
 print("----------------------------------------------------------------------")
 print('Upload 100 same file on that created bucket')
-#file_upload = os.system('for i in {1..100}; do s3cmd put {} s3://{}/{}${i}.iso & done'.format(file_name, bkt_name, file_name))
 for i in range(1,101):
         os.system('s3cmd put {} s3://{}/{}{}.iso'.format(file_name, bkt_name, file_name, i))
 print("Press ENTER once the uploading is done")
