@@ -26,13 +26,13 @@ print("----------------------------------------------------------------------")
 print('Make some changes to .s3cfg file')
 hostname = os.uname()[1]
 port_number='8080'
-os.system('sed -i -e \'s,^host_base *=.*,host_base = http://{}:{},;s,host_bucket *=.*,host_bucket = http://{}:{},;s,website_endpoint *=.*,website_endpoint = http://%(bucket)s.{}-%(location)s,;s,access_key *=.*,access_key = {},;s,secret_key *=.*,secret_key = {},;s,use_https *=.*,use_https = False,\' /root/.s3cfg'.format(hostname, port_number, hostname, port_number, hostname, access_key, secret_key))
+os.system('sed -i -e \'s,^host_base *=.*,host_base = http://{}:{},;s,host_bucket *=.*,host_bucket = http://{}:{},;s,website_endpoint *=.*,website_endpoint = http://%(bucket)s.{}-%(location)s,;s,access_key *=.*,access_key = {},;s,secret_key *=.*,secret_key = {},;s,use_https *=.*,use_https = False,;s,gpg_command *=.*,gpg_command = /usr/bin/gpg,;s,progress_meter *=.*,progress_meter = True,;s,proxy_port *=.*,proxy_port = 0,\' /root/.s3cfg'.format(hostname, port_number, hostname, port_number, hostname, access_key, secret_key))
 s3cmd_work = os.system('s3cmd ls')
 exit_status = os.system('echo $?')
 if exit_status == 0:
         print(port_number)
 else:
-        os.system('sed -i -e \'s,^host_base *=.*,host_base = http://{}:80,;s,host_bucket *=.*,host_bucket = http://{}:80,;s,website_endpoint *=.*,website_endpoint = http://%(bucket)s.{}-%(location)s,;s,access_key *=.*,access_key = {},;s,secret_key *=.*,secret_key = {},;s,use_https *=.*,use_https = False,\' /root/.s3cfg'.format(hostname, hostname, hostname, access_key, secret_key))
+        os.system('sed -i -e \'s,^host_base *=.*,host_base = http://{}:80,;s,host_bucket *=.*,host_bucket = http://{}:80,;s,website_endpoint *=.*,website_endpoint = http://%(bucket)s.{}-%(location)s,;s,access_key *=.*,access_key = {},;s,secret_key *=.*,secret_key = {},;s,use_https *=.*,use_https = False,;s,gpg_command *=.*,gpg_command = /usr/bin/gpg,;s,progress_meter *=.*,progress_meter = True,;s,proxy_port *=.*,proxy_port = 0,\' /root/.s3cfg'.format(hostname, hostname, hostname, access_key, secret_key))
 s3cmd_work = os.system('s3cmd ls')
 print(s3cmd_work)
 print("----------------------------------------------------------------------")
