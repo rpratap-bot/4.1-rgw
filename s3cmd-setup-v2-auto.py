@@ -27,7 +27,8 @@ print(install_s3cmd)
 print("----------------------------------------------------------------------")
 access_key='12345'
 secret_key='67890'
-create_user = os.system("radosgw-admin user create --uid=\"operator\" --display-name=\"S3 Operator\" --email=\"operator@example.com\" --access_key={} --secret={}".format(access_key, secret_key))
+create_user = os.system("radosgw-admin user create --uid=\"operator\" --display-name=\"S3 Operator\" 
+--email=\"operator@example.com\" --access_key={} --secret={}".format(access_key, secret_key))
 print(create_user)
 print("----------------------------------------------------------------------")
 print('It will remove the default /root/.s3cfg file')
@@ -70,25 +71,4 @@ print('Object deleted that was created to upload')
 file_delete = os.system('rm -rf {}'.format(file_name))
 print(file_delete)
 print("------------------------RGW IO OPERATION DONE---------------------------------")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
