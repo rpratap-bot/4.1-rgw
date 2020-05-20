@@ -1,6 +1,7 @@
 #!/usr/bin/python
 '''
 > download this script for auto configure s3cmd and create a bucket and upload 100 files.
+> use - chmod +x script_name.py and then run - ./script_name.py
 > compatible with python version 2
 > script functionalities
 	- enable epel
