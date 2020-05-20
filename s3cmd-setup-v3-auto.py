@@ -1,5 +1,16 @@
 #!/usr/bin/python3
-
+'''
+> download this script for auto configure s3cmd and create a bucket and upload 100 files.
+> use - chmod +x script_name.py and then run - ./script_name.py
+> compatible with python version 3
+> script functionalities
+        - enable epel
+        - install python2-pip, upgarde pip, install s3cmd
+        - create a user = 'operator'
+        - configure .s3cfg file
+        - create 1 100 mb file and upload that in bucket (with 100 objects)
+        - delete the 100 mb file created in the system
+'''
 import os, sys, random
 print('enable the epel repo or by default it may be installed')
 enable_epel = os.system('yum-config-manager --enable epel')
@@ -54,5 +65,9 @@ print('Upload 100 same file on that created bucket')
 for i in range(1,101):
         os.system('s3cmd put {} s3://{}/{}{}.iso'.format(file_name, bkt_name, file_name, i))
 print("Press ENTER once the uploading is done")
+print("----------------------------------------------------------------------")
+print('Object deleted that was created to upload')
+file_delete = os.system('rm -rf {}'.format(file_name))
+print(file_delete)
 print("------------------------RGW IO OPERATION DONE---------------------------------")
 

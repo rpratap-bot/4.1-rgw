@@ -27,8 +27,7 @@ print(install_s3cmd)
 print("----------------------------------------------------------------------")
 access_key='12345'
 secret_key='67890'
-create_user = os.system("radosgw-admin user create --uid=\"operator\" --display-name=\"S3 Operator\" 
---email=\"operator@example.com\" --access_key={} --secret={}".format(access_key, secret_key))
+create_user = os.system("radosgw-admin user create --uid=\"operator\" --display-name=\"S3 Operator\" --email=\"operator@example.com\" --access_key={} --secret={}".format(access_key, secret_key))
 print(create_user)
 print("----------------------------------------------------------------------")
 print('It will remove the default /root/.s3cfg file')
@@ -38,11 +37,7 @@ print("----------------------------------------------------------------------")
 print('Make some changes to .s3cfg file')
 hostname = os.uname()[1]
 port_number='8080'
-os.system('sed -i -e \'s,^host_base *=.*,host_base = http://{}:{},;s,host_bucket *=.*,host_bucket = http://{}:{},;
-s,website_endpoint *=.*,website_endpoint = http://%(bucket)s.{}-%(location)s,;s,access_key *=.*,access_key = {},;
-s,secret_key *=.*,secret_key = {},;s,use_https *=.*,use_https = False,;s,gpg_command *=.*,gpg_command = 
-/usr/bin/gpg,;s,progress_meter *=.*,progress_meter = True,;s,proxy_port *=.*,proxy_port = 0,\' /root/.s3cfg'
-.format(hostname, port_number, hostname, port_number, hostname, access_key, secret_key))
+os.system('sed -i -e \'s,^host_base *=.*,host_base = http://{}:{},;s,host_bucket *=.*,host_bucket = http://{}:{},;s,website_endpoint *=.*,website_endpoint = http://%(bucket)s.{}-%(location)s,;s,access_key *=.*,access_key = {},;s,secret_key *=.*,secret_key = {},;s,use_https *=.*,use_https = False,;s,gpg_command *=.*,gpg_command = /usr/bin/gpg,;s,progress_meter *=.*,progress_meter = True,;s,proxy_port *=.*,proxy_port = 0,\' /root/.s3cfg'.format(hostname, port_number, hostname, port_number, hostname, access_key, secret_key))
 s3cmd_work = os.system('s3cmd ls')
 exit_status = os.system('echo $?')
 if exit_status == 0:
