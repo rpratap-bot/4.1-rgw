@@ -22,7 +22,7 @@ print("----------------------------------------------------------------------")
 upgrade_pip = os.system('pip install --upgrade pip')
 print(upgrade_pip)
 print("----------------------------------------------------------------------")
-install_s3cmd = os.system('yum install s3cmd;pip install s3cmd')
+install_s3cmd = os.system('yum install s3cmd -y;pip install s3cmd')
 print(install_s3cmd)
 print("----------------------------------------------------------------------")
 access_key='12345'
