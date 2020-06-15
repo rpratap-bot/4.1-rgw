@@ -77,13 +77,13 @@ print(file_created3)
 
 print("----------------------------------------------------------------------")
 print('Upload above file on that created bucket')
-for i in range(1,250001):
+for i in range(1,25001):
         os.system('s3cmd put {} s3://{}/{}{}.iso'.format(file_name1, bkt_name, file_name1, i))
 print('1 set done')
-for i in range(1,150001):
+for i in range(1,15001):
         os.system('s3cmd put {} s3://{}/{}{}.iso'.format(file_name2, bkt_name, file_name2, i))
 print('2 set done')
-for i in range(1,100001):
+for i in range(1,10001):
         os.system('s3cmd put {} s3://{}/{}{}.iso'.format(file_name3, bkt_name, file_name3, i))
 print('3 set done')
 print("Press ENTER once the uploading is done")
