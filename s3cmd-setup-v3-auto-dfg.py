@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-> download this script for auto configure s3cmd and create a bucket and upload 100 files.
+> download this script for auto configure s3cmd and create a bucket and upload 3 types of files.
 > use - chmod +x script_name.py and then run - ./script_name.py
 > compatible with python version 3
 > script functionalities
@@ -8,8 +8,8 @@
         - install python2-pip, upgarde pip, install s3cmd
         - create a user = 'operator'
         - configure .s3cfg file
-        - create 1 100 mb file and upload that in bucket (with 100 objects)
-        - delete the 100 mb file created in the system
+        - create 3 files(500kb, 500mb, 4gb) and upload that in bucket (with 50000 objects)
+        - delete 3 files created in the system
 '''
 import os, sys, random
 print('enable the epel repo or by default it may be installed')
